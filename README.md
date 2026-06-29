@@ -1,78 +1,239 @@
-# Deadline Guardian AI
+﻿# Deadline Guardian AI
 
-"Don't just get reminded. Get rescued."
+> Don't just get reminded. Get rescued.
 
-Deadline Guardian AI is a cinematic AI productivity command center for last-minute deadline recovery. It predicts deadline failure, ranks tasks by risk, and generates emergency rescue plans with Gemini or a local mock fallback.
+Deadline Guardian AI is an AI-powered productivity command center built for the problem statement **"The Last-Minute Life Saver"**. Instead of acting like a normal todo app, it predicts deadline failure, identifies high-risk commitments, and generates emergency rescue plans that help users complete important work before time runs out.
 
-## Stack
+The project is designed as a premium hackathon-ready product experience with a cinematic landing page, 3D AI visuals, risk scoring, rescue mode, AI planning, voice-assistant UI, and productivity analytics.
 
-- Next.js App Router
-- JavaScript only
-- Tailwind CSS
-- Framer Motion
-- Three.js, React Three Fiber, Drei
-- Gemini API integration with local fallback
-- LocalStorage demo persistence
+## Live Product Concept
 
-## Folder Structure
+Traditional productivity tools remind users when a deadline is near. Deadline Guardian AI goes further:
+
+- Predicts which tasks are likely to fail
+- Calculates a deadline risk score for every commitment
+- Converts critical tasks into rescue missions
+- Generates time-blocked emergency plans
+- Helps users decide what to do first, what to skip, and how to submit on time
+
+## Core Features
+
+### 1. Deadline Risk Prediction
+
+Each task is evaluated using:
+
+- Deadline proximity
+- Estimated effort
+- Current progress
+- Priority level
+
+The result is a visual risk score with three states:
+
+- **Safe**: Low risk, enough time available
+- **Warning**: Deadline pressure is increasing
+- **Critical**: Immediate rescue action recommended
+
+### 2. AI Rescue Mode
+
+For critical tasks, users can activate Rescue Mode to generate:
+
+- Emergency action plan
+- Time-blocked schedule
+- Step-by-step execution roadmap
+- First action recommendation
+- Work to skip or deprioritize
+- Final submission checklist
+
+The experience includes a dramatic rescue interface with glowing alerts, a pulsing AI orb, and animated plan generation.
+
+### 3. AI Task Planner
+
+Users can enter natural-language goals such as:
+
+```text
+Prepare for interview in 3 days
+```
+
+The planner generates:
+
+- Day-wise plan
+- Priority order
+- Estimated focus sessions
+- Completion checklist
+
+### 4. Smart Productivity Recommendations
+
+The dashboard surfaces practical suggestions such as:
+
+- Start the riskiest task before the next context switch
+- Break large work into smaller sessions
+- Do the hardest part first
+- Move low-priority admin work after urgent submissions
+
+### 5. Voice Assistant UI
+
+A voice-command-style interface demonstrates how users could ask:
+
+- What should I do first?
+- Rescue my assignment
+- Plan my week
+- Which deadline is most dangerous?
+
+### 6. Productivity Analytics
+
+The analytics page shows:
+
+- Productivity score
+- Critical missions
+- Completed tasks
+- Remaining focus hours
+- Category pressure
+- Deadline timeline
+
+## Pages
+
+| Route | Description |
+| --- | --- |
+| `/` | Cinematic landing page with 3D AI orb and product story |
+| `/dashboard` | Main command center with task risk scores and recommendations |
+| `/rescue` | Dedicated rescue-mode experience for critical tasks |
+| `/planner` | AI task planner for natural-language goals |
+| `/analytics` | Productivity insights and risk distribution |
+
+## Tech Stack
+
+- **Framework**: Next.js App Router
+- **Language**: JavaScript
+- **Styling**: Tailwind CSS
+- **Animation**: Framer Motion
+- **3D**: Three.js, React Three Fiber, Drei
+- **AI**: Gemini API with local fallback responses
+- **Storage**: LocalStorage for demo persistence
+- **Deployment**: Vercel-ready
+
+## Project Structure
 
 ```text
 app/
   page.js              Landing page
-  dashboard/page.js    Main command center
-  rescue/page.js       Rescue mode room
-  planner/page.js      AI task planner
-  analytics/page.js    Productivity insights
-components/            Reusable UI, 3D, dashboard, AI components
-hooks/useTasks.js      LocalStorage task state
-lib/risk.js            Deadline risk prediction engine
-lib/ai.js              Gemini + mock response fallback
-lib/tasks.js           Demo task data
-public/images/         Generated product visuals
+  dashboard/page.js    Main dashboard
+  rescue/page.js       Rescue mode page
+  planner/page.js      AI planner page
+  analytics/page.js    Analytics page
+
+components/
+  AIPlanGenerator.js
+  CalendarTimeline.js
+  FeatureCard.js
+  Footer.js
+  Navbar.js
+  PageShell.js
+  ProductivityAnalytics.js
+  RescueModeModal.js
+  RiskMeter.js
+  TaskCard.js
+  ThreeAIOrb.js
+  VoiceAssistant.js
+
+hooks/
+  useTasks.js          LocalStorage-backed task state
+
+lib/
+  ai.js                Gemini integration and mock fallback
+  risk.js              Deadline risk calculation engine
+  tasks.js             Demo task data
+
+public/images/
+  guardian-command-center.png
 ```
 
-## Install
+## Getting Started
+
+### 1. Install Dependencies
 
 ```bash
 npm install
 ```
 
-## Environment
+### 2. Configure Environment Variables
 
-Create `.env.local` if you want live Gemini responses:
+Create a `.env.local` file in the project root if you want live Gemini responses:
 
-```bash
-NEXT_PUBLIC_GEMINI_API_KEY=your_key_here
+```env
+NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
-If the key is missing, the app uses polished mock AI responses so the demo still works.
+The app works without an API key by using built-in mock AI responses, so demos remain stable even offline.
 
-## Run Locally
+### 3. Run The Development Server
 
 ```bash
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open:
 
-## Deploy On Vercel
+```text
+http://localhost:3000
+```
 
-1. Push the project to GitHub.
-2. Import the repo in Vercel.
-3. Add `NEXT_PUBLIC_GEMINI_API_KEY` in Project Settings if using live Gemini.
-4. Deploy with the default Next.js settings.
+### 4. Build For Production
 
-## Demo Script For Judges
+```bash
+npm run build
+```
 
-1. Open the landing page and state the core insight: reminders are reactive, Deadline Guardian AI predicts failure before it happens.
-2. Click **Start Rescue Mode** to enter the dashboard.
-3. Show the highest-risk task, risk score, timeline, productivity score, and AI recommendations.
-4. Click **Activate Rescue Mode** on `Submit DAA Assignment` and show the dramatic generated emergency plan.
-5. Open `/planner`, type `Prepare for interview in 3 days`, and generate a day-wise plan.
-6. Open `/analytics` to show category pressure and focus-hour insights.
-7. Close with the pitch: this is not a todo app, it is a rescue engine for important commitments.
+## Deployment
 
-## Short Pitch
+The project is ready to deploy on Vercel.
 
-Traditional productivity tools remind users after they are already failing. Deadline Guardian AI predicts failure before it happens, explains which deadline is most dangerous, and creates an actionable rescue plan so users can complete the task before time runs out.
+1. Push the repository to GitHub.
+2. Import the repository in Vercel.
+3. Add `NEXT_PUBLIC_GEMINI_API_KEY` in Vercel Environment Variables if using live Gemini responses.
+4. Deploy using the default Next.js settings.
 
+## Demo Data
+
+The app includes realistic demo tasks:
+
+- Submit DAA Assignment
+- Prepare Google Developer Interview
+- Pay Electricity Bill
+- Complete Hackathon Pitch Deck
+- Study Operating System Module 4
+- Client Website Delivery
+
+## Judge Demo Flow
+
+1. Start on the landing page and introduce the core idea: reminders are reactive, Deadline Guardian AI is proactive.
+2. Click **Start Rescue Mode** to open the dashboard.
+3. Show task risk scores, deadline countdowns, AI recommendations, and productivity score.
+4. Activate Rescue Mode for `Submit DAA Assignment`.
+5. Walk through the generated emergency plan and submission checklist.
+6. Open `/planner` and generate a plan for `Prepare for interview in 3 days`.
+7. Open `/analytics` to show productivity score, category pressure, and remaining focus hours.
+8. End with the product pitch below.
+
+## Hackathon Pitch
+
+Traditional productivity tools remind users after they are already falling behind. Deadline Guardian AI predicts failure before it happens, identifies the most dangerous deadline, and creates a practical rescue plan so users can complete the task before time runs out.
+
+This is not a todo list. It is an AI-powered rescue system for high-pressure commitments.
+
+## Environment Safety
+
+Do not commit real API keys.
+
+Use `.env.local` for local secrets and keep `.env.example` as a placeholder only:
+
+```env
+NEXT_PUBLIC_GEMINI_API_KEY=
+```
+
+## Status
+
+Production build verified with:
+
+```bash
+npm run build
+```
